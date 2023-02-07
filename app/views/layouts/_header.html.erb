@@ -9,32 +9,32 @@
         <ul class="navbar-nav ml-auto">
         <% if user_signed_in? %>
           <li>
-            <%= link_to public_user_path(current_user),class: 'nav-link text-light' do %>ホーム
+            <%= link_to public_user_path(current_user),class: 'nav-link btn btn-outline-secondary text-light' do %>マイページ
             <% end %>
           </li>
           <li>
-            <%=  link_to public_users_path,class: 'nav-link text-light' do %>ユーザー
+            <%=  link_to public_users_path,class: 'nav-link btn btn-outline-secondary text-light ml-1' do %>ユーザー
             <% end %>
           </li>
           <li>
-            <%=  link_to public_posts_path ,class: 'nav-link text-light' do %>投稿
+            <%=  link_to public_posts_path ,class: 'nav-link btn btn-outline-secondary text-light ml-1' do %>投稿
             <% end %>
           </li>
           <li>
-            <%= link_to destroy_user_session_path, method: :delete,class: 'nav-link text-light' do %>ログアウト
+            <%= link_to destroy_user_session_path, method: :delete,class: 'nav-link btn btn-outline-secondary text-light ml-1' do %>ログアウト
             <% end %>
           </li>
         <% else %>
           <li>
-            <%= link_to root_path,class: 'nav-link text-light' do %>ホーム
+            <%= link_to root_path,class: 'nav-link btn btn-outline-secondary text-light' do %>ホーム
             <% end %>
           </li>
           <li>
-            <%= link_to new_user_registration_path,class: 'nav-link text-light' do %>新規登録
+            <%= link_to new_user_registration_path,class: 'nav-link btn btn-outline-secondary text-light ml-1' do %>新規登録
             <% end %>
           </li>
           <li>
-            <%= link_to new_user_session_path ,class: 'nav-link text-light' do %>ログイン
+            <%= link_to new_user_session_path ,class: 'nav-link btn btn-outline-secondary text-light ml-1' do %>ログイン
             <% end %>
           </li>
         <% end %>
@@ -43,10 +43,10 @@
     </div>
   </nav>
   <% if user_signed_in? %>
-  <div class="search_form col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+  <div class="search_form col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 ml-auto mt-1">
     <%= form_with url: search_path, local: true, method: :get do |f| %>
      <%= f.text_field :word %>
-     <%= f.select :range, options_for_select([['User'],['Book']]) %>
+     <%= f.select :range, options_for_select([['User'],['Post']]) %>
      <%= f.select :search, options_for_select([["完全一致","perfect_match"],["部分一致","partial_match"]]) %>
      <%= f.submit "検索", class: "btn btn-primary" %>
     <% end %>
