@@ -15,9 +15,10 @@ class Public::PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.user.id = current_user.id
     if @post.save
-      redirect_to post_path(@post.id), notice: "投稿に成功しました。"
+      redirect_to public_post_path(@post.id), notice: "投稿に成功しました。"
     else
       render 'new'
+    end
   end 
 
   def edit
@@ -27,7 +28,7 @@ class Public::PostsController < ApplicationController
   def update
     @posts = Post.find(params[:id])
     if @post.update(post_params)
-      redirect_to post_path_(@post), notice: "投稿の編集に成功しました。"
+      redirect_to public_post_path_(@post), notice: "投稿の編集に成功しました。"
     else
       render 'edit'
     end 
@@ -36,7 +37,7 @@ class Public::PostsController < ApplicationController
   def destroy
     @post = Post.find(params[:id])
     @post.destroy
-    redirect_to posts_path
+    redirect_to public_posts_path
   end
   
   private
@@ -49,7 +50,7 @@ class Public::PostsController < ApplicationController
     @post = Post.find(params[:id])
     @user = @post.user
     unless @user == current_user
-      redirect_to posts_path
+      redirect_to public_posts_path
     end
   end
 

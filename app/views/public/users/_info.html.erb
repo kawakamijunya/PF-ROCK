@@ -1,0 +1,16 @@
+<table class='table'>
+  <tr>
+	  <th>ユーザー名</th>
+	  <th><%= user.name %></th>
+  </tr>
+  <tr>
+	  <th>自己紹介</th>
+	  <th><%= user.introduction %></th>
+  </tr>
+</table>
+
+<div class='row'>
+  <% if user_signed_in? %>
+    <%= link_to "プロフィール編集", edit_public_user_path(user), class: "btn btn-outline-secondary btn-block" %>
+  <% end %>
+</div>

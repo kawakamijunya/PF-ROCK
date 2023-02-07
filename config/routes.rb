@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   registrations: "public/registrations",
   sessions: 'public/sessions'
 }
+  get "search" => "searches#search"
+  
 
   namespace :public do
     #投稿関連
