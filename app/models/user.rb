@@ -3,8 +3,9 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  
+
   has_many :posts, dependent: :destroy
+  has_one_attached :profile_image
   has_many :favorites, dependent: :destroy
   has_many :post_comments, dependent: :destroy
   #フォローした、されたの関係
@@ -13,8 +14,12 @@ class User < ApplicationRecord
   #一覧画面で使う
   has_many :followings, through: :relationships, source: :followed
   has_many :followers, through: :reverse_of_relationships, source: :follower
-  
-  
+
+
+  def get_profile_image
+    (profile_image.attached?) ? profile_image : 'no_image.jpg'
+  end
+
   #フォローした時の処理
   def follow(user_id)
     unless self == user_id
@@ -31,7 +36,7 @@ class User < ApplicationRecord
   def following?(user)
     followings.include?(user)
   end
-  
+
   def self.looks(search, word)
     if search == "perfect_match"
       @user = User.where("name LIKE?", "#{word}")
@@ -41,6 +46,6 @@ class User < ApplicationRecord
       @user = User.all
     end
   end
-  
-  
+
+
 end

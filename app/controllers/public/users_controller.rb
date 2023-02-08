@@ -3,12 +3,12 @@ class Public::UsersController < ApplicationController
   before_action :ensure_correct_user, only: [:update, :edit, :destroy] #update,edit,destroyは直打ち禁止
 
   def index
-    @users = User.all
+    @users = User.all.page(params[:page]).order("id").page(params[:page]) #kaminariを利用したページネーション
   end
 
   def show
     @user = User.find(params[:id])
-    @posts = @user.posts
+    @posts = @user.posts.page(params[:page]).order("id").page(params[:page])
   end
 
   def edit
@@ -26,7 +26,7 @@ class Public::UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :introduction)
+    params.require(:user).permit(:name, :introduction, :profile_image)
   end
 
   def ensure_correct_user

@@ -3,15 +3,15 @@ class Public::PostsController < ApplicationController
   before_action :ensure_correct_user, only: [:update,:edit,:destroy] #update,edit,destroyは直打ち禁止
 
   def index
-    @posts = Post.all
+    @posts = Post.all.page(params[:page]).order("id").page(params[:page]) #kaminariを利用したページネーション
   end
 
   def show
     @post = Post.find(params[:id])
     @post_comment = PostComment.new
   end
-  
-  def create 
+
+  def create
     @post = Post.new(post_params)
     @post.user.id = current_user.id
     if @post.save
@@ -19,33 +19,33 @@ class Public::PostsController < ApplicationController
     else
       render 'new'
     end
-  end 
+  end
 
   def edit
     @post = Post.find(params[:id])
   end
-  
+
   def update
     @posts = Post.find(params[:id])
     if @post.update(post_params)
       redirect_to public_post_path_(@post), notice: "投稿の編集に成功しました。"
     else
       render 'edit'
-    end 
+    end
   end
-  
+
   def destroy
     @post = Post.find(params[:id])
     @post.destroy
     redirect_to public_posts_path
   end
-  
+
   private
-  
+
   def post_params
-    params.require(:post).permit(:title,:caption,:user_id)
+    params.require(:post).permit(:title,:caption,:user_id, :image)
   end
-  
+
   def ensure_correct_user
     @post = Post.find(params[:id])
     @user = @post.user
