@@ -26,9 +26,9 @@ class Public::PostsController < ApplicationController
   end
 
   def update
-    @posts = Post.find(params[:id])
+    @post = Post.find(params[:id])
     if @post.update(post_params)
-      redirect_to public_post_path_(@post), notice: "投稿の編集に成功しました。"
+      redirect_to public_post_path(@post), notice: "投稿の編集に成功しました。"
     else
       render 'edit'
     end
@@ -43,7 +43,7 @@ class Public::PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title,:caption,:user_id, :image)
+    params.require(:post).permit(:image, :title, :caption, :user_id)
   end
 
   def ensure_correct_user
