@@ -11,9 +11,13 @@ class Public::PostsController < ApplicationController
     @post_comment = PostComment.new
   end
 
+  def new
+    @post = Post.new
+  end
+
   def create
     @post = Post.new(post_params)
-    @post.user.id = current_user.id
+    @post.user_id = current_user.id
     if @post.save
       redirect_to public_post_path(@post.id), notice: "投稿に成功しました。"
     else
