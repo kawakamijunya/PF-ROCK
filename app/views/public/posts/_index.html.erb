@@ -16,7 +16,10 @@
             <% end %>
           </p>
           <p class="card-text">説明：<%= post.caption %></p>
-          <span> By <%= post.user.name %></span>
+          <span> By <%= post.user.name %></span> | 
+          <td id="favorite-btn<%= post.id %>">
+            <%= render 'favorites/btn', post: post %>
+          </td>
         </div>
       </div>
     </div>

@@ -1,0 +1,14 @@
+<% if post.favorited_by?(current_user) %>
+  <%= link_to public_post_favorites_path(post), method: :delete, remote: true do %> <%# 非同期化remote: trueを追加%>
+    <i class="far fa-heart like-btn"></i>
+    <%= post.favorites.count %>
+  <% end %>
+
+  <% else %>
+
+  <%= link_to public_post_favorites_path(post), method: :post, remote: true do %> <%# 非同期化remote: trueを追加%>
+    <i class="far fa-heart unlike-btn"></i>
+    <%= post.favorites.count %>
+  <% end %>
+
+<% end %>

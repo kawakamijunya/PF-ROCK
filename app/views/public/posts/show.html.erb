@@ -14,6 +14,8 @@
           </p>
           <p class="card-title">説明：<%= @post.caption %></p>
           <span>By <%= @post.user.name %>  </span>
+          <div id="comments-index"><%= render "post_comments/index", post: @post %></div>
+          <div id="comments-form"><%= render "post_comments/form", post: @post, post_comment: @post_comment %></div>
           <% if @post.user == current_user %>
             <%= link_to '編集', edit_public_post_path(@post.id), class: "btn btn-sm btn-success" %>  <%= link_to "削除", public_post_path(@post), method: :delete, class: "btn btn-sm btn-danger" %>
           <% end %>
