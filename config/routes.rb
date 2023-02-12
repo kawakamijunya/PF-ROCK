@@ -15,14 +15,17 @@ Rails.application.routes.draw do
       resource :favorites, only: [:create,:destroy]
       resources :post_comments, only: [:create,:destroy]
     end
-
     
     #ユーザー関連
     resources :users, only: [:index,:show,:edit,:update] do
       resource :relationships, only: [:create,:destroy]
       get 'followings' => 'relationships#followings', as: 'followings'
       get 'followers' => 'relationships#followers', as: 'followers'
+      member do #ユーザーidが含まれてるurlを使えるように=>(publiusers/:id/favorites)になる
+        get :favorites
+      end
     end
+    
   end
 
   #管理者用

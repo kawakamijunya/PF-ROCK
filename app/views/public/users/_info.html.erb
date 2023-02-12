@@ -1,4 +1,4 @@
-<table class='table'>
+<table class='table table-hover'>
   <tr><%= image_tag user.get_profile_image, size:'100x100' %></tr>
   <tr>
 	  <th>ユーザー名</th>
@@ -8,7 +8,12 @@
 	  <th>自己紹介</th>
 	  <th><%= user.introduction %></th>
   </tr>
+  <tr>
+    <th><%=link_to"いいね一覧",favorites_public_user_path(user.id), class: "btn btn-outline-primary" %></th>
+    <th>フォローボタン</th>
+  </tr>
 </table>
+<p></p>
 
 <div class='row'>
   <% if user_signed_in? %>
