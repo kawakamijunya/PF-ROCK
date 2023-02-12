@@ -1,6 +1,6 @@
-<%= form_with model: [post,post_comment], local: false do |f| %>
+<%= form_with model: [post, post_comment], url: public_post_post_comments_path(post.id), local: false do |f| %>
   <div class="form-group">
-    <%= f.text_area :comment, class: "w-100 comments-form" %>
+    <%= f.text_area :comment, class: "w-100 comments-form mt-1",  placeholder: "コメントをここに" %>
   </div>
   <div class="form-group">
     <%= f.submit "送信" %>
