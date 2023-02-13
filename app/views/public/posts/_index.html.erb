@@ -18,7 +18,7 @@
             <% end %>
           </p>
           <p class="card-text">説明：<%= post.caption %></p>
-          <span> By <%= post.user.name %> :</span> 
+          <span> By <%= post.user.name %> :</span>
           <td>コメント数<%= post.post_comments.count %></td>
           <div id="favorite-btn<%= post.id %>">
             <%= render 'public/favorites/btn', post: post %>
@@ -28,5 +28,5 @@
     </div>
   </div>
   <% end %>
-  <%= paginate posts, theme: 'twitter-bootstrap-4' %>
+  <%#<%= paginate posts, theme: 'twitter-bootstrap-4' %>
 </div>
