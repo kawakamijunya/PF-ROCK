@@ -1,13 +1,13 @@
 Rails.application.routes.draw do
   root to: "homes#top"
-  
+
   #利用者用
   devise_for :users,skip: [:passwords], controllers: {
   registrations: "public/registrations",
   sessions: 'public/sessions'
 }
   get "search" => "searches#search"
-  
+
 
   namespace :public do
     #投稿関連
@@ -15,7 +15,7 @@ Rails.application.routes.draw do
       resource :favorites, only: [:create,:destroy]
       resources :post_comments, only: [:create,:destroy]
     end
-    
+
     #ユーザー関連
     resources :users, only: [:index,:show,:edit,:update] do
       resource :relationships, only: [:create,:destroy]
@@ -25,7 +25,7 @@ Rails.application.routes.draw do
         get :favorites
       end
     end
-    
+
   end
 
   #管理者用

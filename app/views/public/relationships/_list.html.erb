@@ -1,0 +1,26 @@
+<table class='table table-hover table-inverse'>
+  <% if users.exists? %>
+  <thead>
+    <tr>
+      <th>プロフィール画像</th>
+      <th>ユーザー名</th>
+      <th>フォロー数</th>
+      <th>フォロワー数</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+  <% users.each do |user| %>
+    <tr>
+      <td><%= image_tag user.get_profile_image, size:'50x50' %></td>
+      <td><%= user.name %></td>
+      <td><%= link_to  user.followings.count, public_user_followings_path(user.id) %>人</td>
+      <td><%= link_to  user.followers.count, public_user_followers_path(user.id) %>人</td>
+      <td><%= link_to "詳細", public_user_path(user) %></td>
+    </tr>
+  <% end %>
+  </tbody>
+  <% else %>
+    <th>ユーザーはいません</th>
+  <% end %>
+</table>

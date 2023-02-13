@@ -9,14 +9,18 @@
 	  <th><%= user.introduction %></th>
   </tr>
   <tr>
-    <th><%=link_to"いいね一覧",favorites_public_user_path(user.id), class: "btn btn-outline-primary" %></th>
-    <th>フォローボタン</th>
+    <th>フォロー<%= link_to  user.followings.count, public_user_followings_path(user.id) %>人</th>
+    <th>フォロワー<%= link_to  user.followers.count, public_user_followers_path(user.id) %>人</th>
+  </tr>
+  <tr>
+    <th><%=link_to "いいね一覧",favorites_public_user_path(user.id), class: "btn btn-outline-primary" %></th>
+    <th><%= render 'public/relationships/btn', user: user %></th>
   </tr>
 </table>
 <p></p>
 
 <div class='row'>
-  <% if user_signed_in? %>
+  <% if user == current_user %>
     <%= link_to "プロフィール編集", edit_public_user_path(user), class: "btn btn-outline-secondary btn-block" %>
   <% end %>
 </div>
