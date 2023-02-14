@@ -9,19 +9,23 @@
         <ul class="navbar-nav ml-auto">
         <% if user_signed_in? %>
           <li>
-            <%= link_to 'マイページ', public_user_path(current_user),class: 'nav-link btn btn-outline-secondary text-light' %>
+            <%= link_to 'マイページ', public_user_path(current_user), class: 'nav-link btn btn-outline-secondary text-light' %>
           </li>
           <li>
             <%= link_to '新規投稿', new_public_post_path, class: 'nav-link btn btn-outline-secondary text-light ml-1' %>
           </li>
           <li>
-            <%=  link_to 'ユーザー', public_users_path,class: 'nav-link btn btn-outline-secondary text-light ml-1' %>
+            <%=  link_to 'ユーザー', public_users_path, class: 'nav-link btn btn-outline-secondary text-light ml-1' %>
           </li>
           <li>
-            <%=  link_to '投稿', public_posts_path ,class: 'nav-link btn btn-outline-secondary text-light ml-1' %>
+            <%=  link_to '投稿', public_posts_path , class: 'nav-link btn btn-outline-secondary text-light ml-1' %>
           </li>
           <li>
-            <%= link_to 'ログアウト', destroy_user_session_path, method: :delete,class: 'nav-link btn btn-outline-secondary text-light ml-1' %>
+            <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'nav-link btn btn-outline-secondary text-light ml-1' %>
+          </li>
+          <% elsif admin_signed_in? %>
+          <li>
+            <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'nav-link btn btn-outline-secondary text-light' %>
           </li>
         <% else %>
           <li>

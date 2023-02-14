@@ -4,7 +4,6 @@
       <th>プロフィール画像</th>
       <th>ユーザー名</th>
       <th>フォロー</th>
-      <th>リンク</th>
       <th>ステータス</th>
     </tr>
   </thead>
@@ -12,9 +11,8 @@
     <% users.each do |user| %>
       <tr>
         <td><%= image_tag user.get_profile_image, size: '50x50' %></td>
-        <td><%= user.name %></td>
+        <td><%= link_to user.name, public_user_path(user.id) %></td>
         <td><%= render 'public/relationships/btn', user: user %></td>
-        <td><%= link_to '詳細', public_user_path(user.id) %></td>
         <td>
           <% if user.is_deleted == false %>
             有効
