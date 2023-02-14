@@ -19,6 +19,10 @@ class User < ApplicationRecord
   def get_profile_image
     (profile_image.attached?) ? profile_image : 'no_image.jpg'
   end
+  
+  def active_for_authentication? # is_deletedがfalseならtrueを返すようにしている
+    super && (is_deleted == false)
+  end
 
   #フォローした時の処理
   def follow(user_id)

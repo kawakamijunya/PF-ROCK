@@ -3,8 +3,9 @@
     <tr>
       <th>プロフィール画像</th>
       <th>ユーザー名</th>
-      <th></th>
-      <th></th>
+      <th>フォロー</th>
+      <th>リンク</th>
+      <th>ステータス</th>
     </tr>
   </thead>
   <tbody>
@@ -14,6 +15,13 @@
         <td><%= user.name %></td>
         <td><%= render 'public/relationships/btn', user: user %></td>
         <td><%= link_to '詳細', public_user_path(user.id) %></td>
+        <td>
+          <% if user.is_deleted == false %>
+            有効
+          <% else %>
+            退会済
+          <% end %>
+        </td>
       </tr>
     <% end %>
   </tbody>
