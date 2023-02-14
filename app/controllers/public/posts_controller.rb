@@ -3,7 +3,7 @@ class Public::PostsController < ApplicationController
   before_action :ensure_correct_user, only: [:update,:edit,:destroy] #update,edit,destroyは直打ち禁止
 
   def index
-    @posts = Post.all.page(params[:page]).order("id").page(params[:page]) #kaminariを利用したページネーション
+    @posts = Post.all.order("id").page(params[:page]) #kaminariを利用したページネーション
   end
 
   def show
