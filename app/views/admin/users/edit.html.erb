@@ -1,0 +1,37 @@
+<div class='container'>
+  <div class='row'>
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+    <h2>プロフィール</h2>
+    <%= form_with model:@user, url:admin_user_path, local:true do |f| %>
+    
+      <div class="form-group">
+        <%= f.label :プロフィール画像 %>
+        <%= f.file_field :profile_image, class: "form-control-file user_image", accept: 'image/*' %>
+      </div>
+      
+      <div class="form-group">
+        <%= f.label :ユーザー名 %>
+        <%= f.text_field :name, class: "form-control name" %>
+      </div>
+      
+      <div class="form-group">
+        <%= f.label :自己紹介 %>
+        <%= f.text_area :introduction, class: "form-control introduction" %>
+      </div>
+      
+      <div class="form-group">
+        <%= f.label :会員ステータス %>
+        <%= f.radio_button :is_deleted, :false %>
+        <%= f.label :is_deleted, "有効" %>
+        <%= f.radio_button :is_deleted, :true %>
+        <%= f.label :is_deleted, "退会" %>
+      </div>
+      
+      <div class="form-group">
+        <%= f.submit "更新する", class: 'btn btn-secondary' %>
+      </div>
+
+    <% end %>
+    </div>
+  </div>
+</div>

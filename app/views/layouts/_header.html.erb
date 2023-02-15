@@ -25,7 +25,10 @@
           </li>
           <% elsif admin_signed_in? %>
           <li>
-            <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'nav-link btn btn-outline-secondary text-light' %>
+            <%=  link_to 'ユーザー', admin_users_path, class: 'nav-link btn btn-outline-secondary text-light ml-1' %>
+          </li>
+          <li>
+            <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'nav-link btn btn-outline-secondary text-light ml-1' %>
           </li>
         <% else %>
           <li>
