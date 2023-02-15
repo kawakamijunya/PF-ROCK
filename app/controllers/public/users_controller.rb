@@ -1,6 +1,7 @@
 class Public::UsersController < ApplicationController
   before_action :authenticate_user!, except: [:show, :index]
   before_action :ensure_correct_user, only: [:update, :edit, :destroy] #update,edit,destroyは直打ち禁止
+  before_action :ensure_guest_user, only: [:edit]
 
   def index
     @users = User.all.order("id").page(params[:page]) #kaminariを利用したページネーション
@@ -50,6 +51,13 @@ class Public::UsersController < ApplicationController
       redirect_to public_user_path(current_user)
     end
   end
+  
+  def ensure_guest_user
+    @user = User.find(params[:id])
+    if @user.name == "guestuser"
+      redirect_to public_user_path(current_user) , notice: 'ゲストユーザーはプロフィール編集画面へ遷移できません。'
+    end
+  end  
 
 
 end

@@ -7,8 +7,11 @@ Rails.application.routes.draw do
   sessions: 'public/sessions'
 }
   get "search" => "searches#search"
-
-
+  
+  devise_scope :user do #ゲストログイン
+    post 'users/guest_sign_in', to: 'users/sessions#guest_sign_in'
+  end
+  
   namespace :public do
     #投稿関連
     resources :posts, only: [:new,:index,:show,:edit,:create,:destroy,:update] do
