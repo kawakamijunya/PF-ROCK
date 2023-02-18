@@ -9,6 +9,19 @@
             <%= f.text_field :title, class:"form-control", placeholder:"タイトル" %>
           </div>
           <%= f.text_area :caption, class:"form-control", rows:"3", placeholder:"コメント" %>
+          
+          <div class="check_box mt-1">
+            <span>#タグ</span>
+            <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |tag| %>
+              <div>
+                <%= tag.label do %>
+                  <%= tag.check_box %>
+                  <%= tag.text %>
+                <% end %>
+              </div>
+            <% end %>
+         </div>
+         
           <br>
           <%= f.submit '投稿', class:"btn btn-lg btn-block btn-info mt-4" %>
         <% end %>

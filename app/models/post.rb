@@ -3,6 +3,8 @@ class Post < ApplicationRecord
   has_one_attached :image
   has_many :favorites, dependent: :destroy
   has_many :post_comments, dependent: :destroy
+  has_many :post_tags, dependent: :destroy
+  has_many :tags, through: :post_tags #中間テーブルであるpost_tagモデルを介してのtagモデルとの関連付けを記述
   validates :title, presence:true
   validates :caption, presence:true, length:{maximum:200}
 

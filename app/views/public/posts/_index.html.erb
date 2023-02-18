@@ -1,4 +1,14 @@
 <div class="card-list-container py-5 mb-5">
+  
+  <div class="ml-5">
+  <%= form_tag public_posts_path, method: :get, class: 'boards__searchForm' do %>
+    <%= select_tag :tag_id,options_from_collection_for_select(Tag.all, :id, :name, params[:tag_id]),{
+      prompt: 'タグで絞り込み検索',
+      onchange: 'submit(this.form);'
+      } %>
+  <% end %>
+  </div>
+  
   <% posts.each do |post| %>
   <div class="card w-50 mx-auto mt-4 shadow-lg">
     <%= link_to public_post_path(post.id) do %>
@@ -18,6 +28,11 @@
             <% end %>
           </p>
           <p class="card-text">説明：<%= post.caption %></p>
+          <p>
+            <% post.tags.each do |tag| %>
+              #<%= tag.name %>
+            <% end %> 
+          </p>
           <span> By <%= post.user.name %> :</span>
           <td>コメント数<%= post.post_comments.count %></td>
           <div id="favorite-btn<%= post.id %>">

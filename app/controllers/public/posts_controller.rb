@@ -3,7 +3,13 @@ class Public::PostsController < ApplicationController
   before_action :ensure_correct_user, only: [:update,:edit,:destroy] #update,edit,destroyは直打ち禁止
 
   def index
-    @posts = Post.all.order("id").page(params[:page]) #kaminariを利用したページネーション
+    # if文を使う場合の記述
+    # @posts = Post.all.order("id").page(params[:page]) #kaminariを利用したページネーション
+    # if params[:tag_id]
+      # @posts = Tag.find(params[:tag_id]).posts.page(params[:page])
+    # end
+    
+    @posts = params[:tag_id].present? ? Tag.find(params[:tag_id]).posts.page(params[:page]) : Post.all.order("id").page(params[:page])
   end
 
   def show
@@ -47,7 +53,7 @@ class Public::PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:image, :title, :caption, :user_id)
+    params.require(:post).permit(:image, :title, :caption, :user_id, tag_ids: [])
   end
 
   def ensure_correct_user
