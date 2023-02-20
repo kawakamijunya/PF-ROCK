@@ -1,7 +1,7 @@
 <div class='container px-5 px-sm-0'>
   <div class='row'>
     <div class='col-md-4 my-5'>
-      <h2>プロフィール</h2>
+      <h2 class="mt-5">プロフィール</h2>
       <table class='table table-hover'>
         <tr><%= image_tag @user.get_profile_image, size:'100x100' %></tr>
         <tr>
@@ -16,7 +16,7 @@
       <%= link_to "プロフィール編集", edit_admin_user_path(@user.id), class: "btn btn-success  btn-block" %>
     </div>
     <div class='col-md-8 my-5'>
-      <h2 class="ml-3">投稿</h2>
+      <h2 class="ml-3 mt-5">投稿</h2>
       <div class="card-list-container py-5">
       <% @posts.each do |post| %>
       <div class="card w-50 mx-auto mt-4 shadow-lg">
