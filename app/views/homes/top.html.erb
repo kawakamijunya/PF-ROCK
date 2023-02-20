@@ -12,9 +12,12 @@
       </div>
 
       <div class="btn-wrapper col-10 mx-auto mt-5">
+        <% if user_signed_in? %>
+        <% else %>
         <div class="row">
            <%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, class: "btn btn-secondary btn-sm btn-block mb-3 sign_in", method: :post %>
         </div>
+        <% end %>
       </div>
     </div>
   </div>
