@@ -7,17 +7,23 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 # 新たにrails db:seedの際は一旦削除するか、findやwhereで検索をかける
-Admin.create!(
-   email: 'admin@admin',
-   password: 'testtest'
-)
+# Admin.create!(
+#   email: 'admin@admin',
+#   password: 'testtest'
+# )
+
+Admin.find_or_create_by!(email: "admin@admin") do |admin|
+  admin.email = "admin@admin"
+  admin.password = "testtest"
+end
 
 Tag.create([
-    { name: 'メロコア' },
+    { name: 'メロコア'},
     { name: 'ラウド' },
     { name: 'パンク'},
     { name: 'ハード'},
     { name: 'ポップ'},
-    { name: 'オルタナティブ'}
+    { name: 'オルタナティブ'},
+    { name: 'スカ'}
     ])
 
