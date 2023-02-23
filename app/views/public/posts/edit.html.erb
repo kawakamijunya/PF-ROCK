@@ -1,6 +1,9 @@
 <div class="containar ">
   <div class="row no-gutters mt-5">
     <div class="col-md-5 col-sm-10 mx-2 mx-sm-auto shadow-lg rounded px-0 my-5">
+      
+      <%= render "devise/shared/error_messages", resource: @post %>
+      
       <h5 class="text-dark bg-light p-4 mb-0 ">投稿編集</h5>
       <div class="form-body p-4">
         <%= form_with model:@post, url:public_post_path, method: :PATCH do |f| %>

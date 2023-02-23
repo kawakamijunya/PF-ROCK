@@ -1,6 +1,9 @@
 <div class="containar mt-5">
   <div class="row no-gutters">
     <div class="col-md-5 col-sm-10 mx-2 mx-sm-auto shadow-lg rounded px-0 my-5">
+      
+      <%= render "devise/shared/error_messages", resource: @post %>
+      
       <h5 class="text-dark bg-light p-4 mb-0">新規投稿</h5>
       <div class="form-body p-4">
         <%= form_with model:@post, url:public_posts_path, method: :post do |f| %>
@@ -8,7 +11,7 @@
           <div class="input-group mb-3 mt-4">
             <%= f.text_field :title, class:"form-control", placeholder:"タイトル" %>
           </div>
-          <%= f.text_area :caption, class:"form-control", rows:"3", placeholder:"コメント" %>
+          <%= f.text_area :caption, class:"form-control", rows:"3", placeholder:"説明文" %>
           
           <div class="check_box mt-1">
             <span>#タグ</span>
