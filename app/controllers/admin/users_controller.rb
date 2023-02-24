@@ -1,12 +1,12 @@
 class Admin::UsersController < ApplicationController
 
   def index
-    @users = User.all.order("id").page(params[:page])
+    @users = User.all.order("created_at DESC").page(params[:page])
   end
 
   def show
     @user = User.find(params[:id])
-    @posts = @user.posts.order("id").page(params[:page])
+    @posts = @user.posts.order("created_at DESC").page(params[:page])
   end
 
   def edit
