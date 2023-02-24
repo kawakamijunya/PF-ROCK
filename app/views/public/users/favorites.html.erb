@@ -1,7 +1,7 @@
 <h2 class="ml-5 pt-5 my-5">いいね一覧</h2>
 <div class="card-list-container py-5">
   <% @favorite_posts.each do |post| %>
-  <div class="card w-25 mx-auto my-4 shadow-lg">
+  <div class="card w-50 mx-auto my-4 shadow-lg">
     <%= link_to public_post_path(post.id) do %>
       <%= image_tag post.get_image, class: "card-img-top"; %>
     <% end %>
@@ -29,5 +29,7 @@
     </div>
   </div>
   <% end %>
-  <%= paginate @posts, theme: 'twitter-bootstrap-4' %>
+  <div class="col-2 mx-auto my-5">
+    <%= paginate @posts, theme: 'twitter-bootstrap-4' %>
+  </div>
 </div>

@@ -9,7 +9,7 @@ class Public::PostsController < ApplicationController
       # @posts = Tag.find(params[:tag_id]).posts.page(params[:page])
     # end
     
-    @posts = params[:tag_id].present? ? Tag.find(params[:tag_id]).posts.page(params[:page]) : Post.all.order("id").page(params[:page])
+    @posts = params[:tag_id].present? ? Tag.find(params[:tag_id]).posts.order("created_at DESC").page(params[:page]) : Post.all.order("created_at DESC").page(params[:page])
   end
 
   def show

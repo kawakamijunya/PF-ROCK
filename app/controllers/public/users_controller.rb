@@ -4,12 +4,12 @@ class Public::UsersController < ApplicationController
   before_action :ensure_guest_user, only: [:edit]
 
   def index
-    @users = User.all.order("id").page(params[:page]) #kaminariを利用したページネーション
+    @users = User.all.order("created_at DESC").page(params[:page]) #kaminariを利用したページネーション
   end
 
   def show
     @user = User.find(params[:id])
-    @posts = @user.posts.order("id").page(params[:page])
+    @posts = @user.posts.order("created_at DESC").page(params[:page])
   end
 
   def edit
@@ -36,7 +36,7 @@ class Public::UsersController < ApplicationController
     @user = User.find(params[:id])
     favorites = Favorite.where(user_id: @user.id).pluck(:post_id)
     @favorite_posts = Post.find(favorites)
-    @posts = Post.all.order("id").page(params[:page])
+    @posts = Post.all.order("created_at DESC").page(params[:page])
   end
 
   private
