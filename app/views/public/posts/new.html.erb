@@ -1,4 +1,4 @@
-<div class="containar mt-5">
+<div class="containar my-5">
   <div class="row no-gutters">
     <div class="col-md-5 col-sm-10 mx-2 mx-sm-auto shadow-lg rounded px-0 my-5">
       
@@ -11,6 +11,7 @@
           <div class="input-group mb-3 mt-4">
             <%= f.text_field :title, class:"form-control", placeholder:"タイトル" %>
           </div>
+          
           <%= f.text_area :caption, class:"form-control", rows:"3", placeholder:"説明文" %>
           
           <div class="check_box mt-1">
@@ -23,7 +24,7 @@
                 <% end %>
               </div>
             <% end %>
-         </div>
+          </div>
          
           <br>
           <%= f.submit '投稿', class:"btn btn-lg btn-block btn-info mt-4" %>

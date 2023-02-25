@@ -5,6 +5,7 @@
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
+      
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav ml-auto">
         <% if user_signed_in? %>
@@ -23,7 +24,7 @@
           <li>
             <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'nav-link btn btn-outline-secondary text-light ml-1' %>
           </li>
-          <% elsif admin_signed_in? %>
+        <% elsif admin_signed_in? %>
           <li>
             <%=  link_to 'ユーザー', admin_users_path, class: 'nav-link btn btn-outline-secondary text-light ml-1' %>
           </li>

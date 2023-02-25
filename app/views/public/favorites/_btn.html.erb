@@ -4,7 +4,7 @@
     <%= post.favorites.count %>
   <% end %>
 
-  <% else %>
+<% else %>
 
   <%= link_to public_post_favorites_path(post), method: :post, remote: true do %> <%# 非同期化remote: trueを追加%>
     <i class="far fa-heart unlike-btn"></i>

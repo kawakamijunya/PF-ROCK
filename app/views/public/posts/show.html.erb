@@ -23,9 +23,11 @@
           <div id="favorite-btn<%= @post.id %>"><%= render 'public/favorites/btn', post: @post %></div>
           <div id="comments-index"><%= render "public/post_comments/index", post: @post %></div>
           <div id="comments-form"><%= render "public/post_comments/form", post: @post, post_comment: @post_comment %></div>
+          
           <% if @post.user == current_user %>
             <%= link_to '編集', edit_public_post_path(@post.id), class: "btn btn-sm btn-success" %>  <%= link_to "削除", public_post_path(@post), method: :delete, class: "btn btn-sm btn-danger" %>
           <% end %>
+          
         </div>
       </div>
     </div>

@@ -16,32 +16,36 @@
       <%= link_to "プロフィール編集", edit_admin_user_path(@user.id), class: "btn btn-success  btn-block" %>
     </div>
     <div class='col-md-8 my-5'>
-      <h2 class="ml-3 mt-5">投稿</h2>
+    <h2 class="ml-3 mt-5">投稿</h2>
       <div class="card-list-container py-5">
       <% @posts.each do |post| %>
-      <div class="card w-50 mx-auto mt-4 shadow-lg">
-        <%= link_to public_post_path(post.id) do %>
-        <%= image_tag post.get_image, class: "card-img-top"; %>
-      <% end %>
-      <div class="card-body">
-        <div class="row">
-          <div class="col-3" style="padding-right: 0;">
-            <div class="pt-3">
-              <%= image_tag post.user.get_profile_image, class: "w-100 rounded-circle", style: "aspect-ratio: 1/1;object-fit: cover;" %>
+        <div class="card w-50 mx-auto mt-4 shadow-lg">
+          <%= link_to public_post_path(post.id) do %>
+            <%= image_tag post.get_image, class: "card-img-top"; %>
+          <% end %>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-3" style="padding-right: 0;">
+              <div class="pt-3">
+                <%= image_tag post.user.get_profile_image, class: "w-100 rounded-circle", style: "aspect-ratio: 1/1;object-fit: cover;" %>
+              </div>
+            </div>
+             <div class="col-9">
+               <p class="card-title">
+                 <strong> <i class="far fa-flag"></i><%= post.title %></strong>
+               </p>
+               <p class="card-text">説明：<%= post.caption %></p>
+               <span> By <%= post.user.name %> :</span>
+             </div>
             </div>
           </div>
-           <div class="col-9">
-             <p class="card-title">
-               <strong> <i class="far fa-flag"></i><%= post.title %></strong>
-             </p>
-             <p class="card-text">説明：<%= post.caption %></p>
-             <span> By <%= post.user.name %> :</span>
-           </div>
         </div>
-      </div>
-      </div>
       <% end %>
-      <%= paginate @posts, theme: 'twitter-bootstrap-4' %>
+      
+      <div class="col-2 mx-auto my-5">
+        <%= paginate @posts, theme: 'twitter-bootstrap-4' %>
+      </div>
+      
       </div>
     </div>
   </div>

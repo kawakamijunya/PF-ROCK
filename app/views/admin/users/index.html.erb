@@ -11,6 +11,7 @@
             <th>編集</th>
           </tr>
         </thead>
+        
         <tbody>
         <% @users.each do |user| %>
           <tr>
@@ -32,6 +33,7 @@
       <div class="col-5 mx-auto my-5 pb-5">
         <%= paginate @users, theme: 'twitter-bootstrap-4' %>
       </div>
+      
     </div>
   </div>
 </div>
