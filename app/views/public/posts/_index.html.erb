@@ -10,7 +10,7 @@
   </div>
   
   <% posts.each do |post| %>
-  <div class="card w-50 mx-auto mt-4 shadow-lg">
+  <div class="col-sm-6 card  mx-auto mt-4 pt-3 shadow-lg" style="width: 100%;">
     <%= link_to public_post_path(post.id) do %>
       <%= image_tag post.get_image, class: "card-img-top"; %>
     <% end %>
