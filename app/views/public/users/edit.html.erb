@@ -4,7 +4,7 @@
       
       <%= render "devise/shared/error_messages", resource: @user %>
       
-    <h2 class="pt-5">プロフィール編集</h2>
+    <h2 style="border-left: solid 5px #f00; padding: 0.25em 0.5em;">プロフィール編集</h2>
     <%= form_with model:@user, url:public_user_path, local:true do |f| %>
     
       <div class="form-group">
