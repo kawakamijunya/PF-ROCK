@@ -28,7 +28,7 @@
 
 <div class="row my-5 pb-5">
   <%= form_with url: search_path, local: true, method: :get do |f| %>
-  <%= f.text_field :word %>
+  <%= f.text_field :word, placeholder:"検索" %>
   <%= f.select :range, options_for_select([['User'],['Post']]) %>
   <%= f.select :search, options_for_select([["完全一致","perfect_match"],["部分一致","partial_match"]]) %>
   <%= f.submit "検索", class: "btn btn-primary btn-sm" %>

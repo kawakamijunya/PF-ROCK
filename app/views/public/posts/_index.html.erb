@@ -3,7 +3,7 @@
   <div class="ml-5">
   <%= form_tag public_posts_path, method: :get, class: 'boards__searchForm' do %>
     <%= select_tag :tag_id,options_from_collection_for_select(Tag.all, :id, :name, params[:tag_id]),{
-      prompt: 'タグで絞り込み検索',
+      prompt: 'タグで検索',
       onchange: 'submit(this.form);'
       } %>
   <% end %>
