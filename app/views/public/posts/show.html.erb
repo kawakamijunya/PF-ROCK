@@ -11,6 +11,7 @@
             <%= link_to(public_post_path(@post.id), class:"text-dark") do %>
               <span><strong><i class="far fa-flag"></i> <%= @post.title %></span></strong>
             <% end %>
+            ：<i class="far fa-clock clock-icon"></i><%= @post.created_at.strftime('%Y/%m/%d') %>
           </p>
           <p class="card-title">説明：<%= @post.caption %></p>
           <p>

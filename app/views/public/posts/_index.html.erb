@@ -26,6 +26,7 @@
             <%= link_to(public_post_path(post.id), class: "text-dark stretched-link") do %>
               <strong><i class="far fa-flag"></i><span> <%= post.title %></span></strong>
             <% end %>
+            : <i class="far fa-clock clock-icon"></i><%= time_ago_in_words(post.created_at) %>前
           </p>
           <p class="card-text">説明：<%= post.caption %></p>
           <p>
