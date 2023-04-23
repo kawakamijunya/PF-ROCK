@@ -1,22 +1,22 @@
-<div class="container mt-5">
-  <div class="row">
-    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0">
-    <h2 class="my" style="border-left: solid 5px #f00; padding: 0.25em 0.5em;">新規登録</h2>
+<div class="containar mb-5">
+  <div class="row no-gutters">
+    <div class="col-md-3 col-sm-10 mx-2 mx-sm-auto shadow-lg rounded px-0 my-5">
+    <h2 class="mb-2" style="border-left: solid 5px #f00; padding: 0.25em 0.5em;">新規登録</h2>
 
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
       <%= render "public/shared/error_messages", resource: resource %>
 
-      <div class="field">
+      <div class="field p-2", style: "width:100%">
         <%= f.label :ユーザーネーム %><br>
         <%= f.text_field :name %>
       </div>
 
-      <div class="field">
+      <div class="field p-2">
         <%= f.label :メールアドレス %><br />
         <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
       </div>
 
-      <div class="field">
+      <div class="field p-2">
         <%= f.label :パスワード %>
         <% if @minimum_password_length %>
         <em>(<%= @minimum_password_length %> 文字以上)</em>
@@ -24,19 +24,25 @@
         <%= f.password_field :password, autocomplete: "new-password" %>
       </div>
 
-      <div class="field">
+      <div class="field p-2">
         <%= f.label :パスワード確認 %><br />
         <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
       </div>
 
-      <div class="actions mt-2 mb-5">
+      <div class="actions mt-2 mb-5 p-2">
         <%= f.submit "新規登録", class: "btn btn-success" %>
       </div>
     <% end %>
-
-      <%= render "public/shared/links" %>
+    
+      <div class="actions p-2">
+        <%= render "public/shared/links" %>
+      </div>
 
     </div>
   </div>
 </div>
+
+
+
+
 
