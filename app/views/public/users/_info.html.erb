@@ -21,7 +21,7 @@
 <div class='row'>
   <% if user.name != "guestuser" %>
     <% if user == current_user %>
-      <%= link_to "プロフィール編集", edit_public_user_path(user), class: "btn btn-outline-secondary btn-block edit_user_#{user.id}" %>
+      <%= link_to "プロフィール編集", edit_public_user_path(user), class: "btn btn-outline-secondary btn-block" %>
     <% end %>
   <% end %>
 </div>
